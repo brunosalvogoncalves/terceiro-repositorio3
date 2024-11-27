@@ -1,3 +1,5 @@
+import { getCSS } from "./commons.js"
+
 async function quantidadeUsuarios() {
     const url = ‘https://raw.
     githubusercontent.com/guilhermeonrails/api/
@@ -12,14 +14,20 @@ async function quantidadeUsuarios() {
            x: nomeDasRedes,
            y: quantidadeUsuarios,
            type: 'bar'
+           color: getCSS('--primary-color')
         }
 
     ]
+
+    const layout = {
+        plot_bgcolor: getCSS('--bg-color'),
+        paper_bgcolor: getCSS('--bg-color')
+    }
     
     const graficos = document.createElement('div');
     graficos.className = 'grafico';
     document.getElementById('graficos-container').appendChild(graficos);
-    plotly.newPlot(graficos, data);
+    plotly.newPlot(graficos, data, layout);
 }
     
     quantidadeUsuarios()
